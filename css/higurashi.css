@@ -1,0 +1,28 @@
+/* 
+    Document   : higurashi
+    Created on : 2013/10/05, 9:44:38
+    Author     : kawabata
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+th {
+    fond-style: italic; 
+}
+
+.mb10 {margin-bottom: 10px}
+.mb20 {margin-bottom: 20px}
+
+#game_on table {
+    border-collapse: collapse;
+}
+
+#game_on table td,th {
+    border: 1px solid;
+    width: 120px;
+    text-align: center;
+}

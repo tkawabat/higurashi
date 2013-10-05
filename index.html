@@ -1,0 +1,54 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Higurashi</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/higurashi.css">
+    </head>
+    <body>
+        <h2>Higurashi</h2>
+        <div id="game_init" class="mb20">   
+            <table>
+            <tr>
+                <td>あなたのお名前</td>
+                <td><input type="text" id="your_name"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>ゲームデータ</td>
+                <td><textarea id="game_data" rows="4" cols="60" ></textarea></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>ランダムシード</td>
+                <td><input id="random_seed" type="number"><input type="button" id="b_generate" value="gerate"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><input type="button" id="b_start" value="スタート"></td>
+            </tr>
+            </table>
+        </div>
+        
+        <div id="game_on" class="mb20">
+            <div class="mb10">
+                <div class="label">データ</div>
+                <table id="all_data"></table>
+            </div>
+            <div class="mb10">
+                <div class="label">あなたのデータ</div>
+                <table id="your_data"></table>
+            </div>
+        </div>
+            
+        <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="js/jgame.js"></script>
+        <script type="text/javascript" src="js/game.js"></script>
+    </body>
+</html>
