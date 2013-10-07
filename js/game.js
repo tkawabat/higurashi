@@ -101,7 +101,36 @@ var Higurashi = {};
             
             return true;
         }
-
+        Game.prototype.solve = function(str) {
+            var line = str.replace(new RegExp('　', 'g'), ' ').split(' ')
+            , variables = NS.Const.variables
+            , bool, i, n, key
+            ;
+            
+            if (typeof this.all_data === 'undefined') {
+                alert('ゲームがスタートされていません。出直せ');
+                return false;
+            }
+            
+            // 個数チェック
+            if (line.length < NS.Const.vnum - 1) {
+                alert('なんか間違ってます。やり直せ');
+                return false;
+            }
+            
+            key = NS.Const.variables[0];
+            n = this.all_data[key].indexOf(NS.Const.master);
+            
+            for (i = 1; i < NS.Const.vnum; i++) {
+                if (line[i - 1] !== this.all_data[variables[i]][n]) {
+                    alert('間違ってます');
+                    return false;
+                }
+            }
+            alert('正解です');
+            return true;
+        }
+        
         return Game;
     })();
     
@@ -162,11 +191,19 @@ var Higurashi = {};
     , d_game_on = $('#game_on')
     , d_all_data = d_game_on.find('#all_data')
     , d_your_data = d_game_on.find('#your_data')
+    
+    , d_game_answer = $('#game_answer')
+    , d_answer_data = d_game_answer.find('#answer_data')
+    , d_b_solve   = d_game_answer.find('#b_solve')
     ;
+    
     
     d_your_name.val(util.get("your_name"));
 
     d_seed.val(Math.round(Math.random() * 1000000));
+    
+    // for debug
+    //d_game_data.val('aaa\nグレートソード　トンカチ\n長野　旅館');
     
     d_b_generate.click(function() {
         d_seed.val(Math.round(Math.random() * 1000000));
@@ -196,5 +233,9 @@ var Higurashi = {};
         ];
         
         d_your_data.html(util.addTagMap(arr, {tag: 'tr'}));
+    });
+    
+    d_b_solve.click(function() {
+        game.solve(d_answer_data.val());
     });
 })(Higurashi);
